@@ -1,16 +1,25 @@
 use std::fs::File;
 use std::io::Read;
+use std::io::BufReader;
 
 fn main() -> Result<(),std::io::Error> {
-    let mut file = File::create("input.txt")?;
+    let file = File::open("input.txt")?;
     //let file = file!("../data/input.txt");
 
 
+    //let mut input = vec![];
+ 
+    let mut reader = BufReader::new(file);
+
     let mut input = vec![];
-    file.read_to_end(&mut input)?;
-    for line in input {
-        println!("{}", line)
-    }
+
+    for ln in reader.read_line()
+
+    reader.read_to_end(&mut input)?;
+
+    println!("{:?}", input);
+    
 
     Ok(())
+    
 }
